@@ -6,6 +6,7 @@ import plotly.graph_objs as go
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input,Output
+from gunicorn.app.pasterapp import serve
 
 deliveries = pd.read_csv('D:\Learning\DSMP 2.0\IPL_Analysis_Dashboard_Dash\Datasets\deliveries.csv')
 matches = pd.read_csv('D:\Learning\DSMP 2.0\IPL_Analysis_Dashboard_Dash\Datasets\matches.csv')
@@ -58,6 +59,7 @@ options = [
 ]
 
 app=dash.Dash(__name__,external_stylesheets=external_stylesheets)
+server = app.server
 
 app.layout=html.Div(
     [
